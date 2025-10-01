@@ -1,12 +1,20 @@
-def invertir_numero(n, invertido=0):
-    if n == 0:
-        return invertido
-    else:
-        print(n // 10)
-        print(f"El valor de invertido * 10 es: {invertido * 10}")
-        print(f"El valor de n % 10 es: {n % 10}")
-        print(f"El valor de invertido * 10 + n % 10 es: {invertido * 10 + n % 10}")
-        return invertir_numero(n // 10, invertido * 10 + n % 10)
+import sys
 
-x = int(input("Por favor, ingrese un número: "))
-print(invertir_numero(x))
+
+def binarioToDecimal(n):
+    if n == 0 or n == 1:
+        return n
+    
+    # último dígito
+    ultimo_digito = n % 10
+    
+    # Quitar último dígito
+    resto = n // 10 
+    return ultimo_digito + 2 * binarioToDecimal(resto)
+
+def main():
+    n = int(sys.argv[1])
+    print(binarioToDecimal(n))
+
+if __name__ == "__main__":
+    main()
